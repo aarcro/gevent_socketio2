@@ -1,10 +1,9 @@
 import logging
 
+from django.conf.urls import url
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.importlib import import_module
-
-from django.conf.urls import patterns
+from importlib import import_module
 
 logger = logging.getLogger("socketio")
 
@@ -55,6 +54,9 @@ def socketio(request):
 
     return HttpResponse("")
 
+
 autodiscover()
 
-urls = patterns("", (r'', socketio))
+urlpatterns = [
+    url('', socketio)
+]
